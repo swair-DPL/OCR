@@ -32,14 +32,17 @@ export default class OCRView extends Component {
   list = () => {
     return this.state.data.map(element => {
       console.log('element vad' + JSON.stringify(element))
-      return (
-        <View style={{ margin: 10 }}>
-          <Text>{element.text}</Text>
-        </View>
-      );
+      if (this.validVIN(element.text))
+        return (
+          <Text style={{ margin: 10 }}>{element.text}</Text>
+        );
+      else return null;
     });
   };
-
+  validVIN(str) {
+    console.log('validity chk on ' + str + 'reutrns ' + str.match(".*[A-Z].*"))
+    return str.match("^[A-Z0-9]{16}");
+  }
 }
 const styles = StyleSheet.create({
   container: {
