@@ -15,7 +15,6 @@ export default class Camera extends Component {
 
     return (
       <View style={styles.container}>
-
         <RNCamera
           ref={ref => {
             this.camera = ref;
@@ -50,11 +49,6 @@ export default class Camera extends Component {
       </View>
     );
   }
-  flash = () => {
-    if (this.state.flashMode == RNCamera.Constants.FlashMode.off) {
-      this.setState({ flashMode: RNCamera.Constants.FlashMode.torch });
-    } else this.setState({ flashMode: RNCamera.Constants.FlashMode.off });
-  };
   takePicture = async () => {
     try {
       this.setState({ loading: true })
